@@ -56,7 +56,7 @@ export default function Team() {
 							<h2 className="text-xl text-white font-peyda-black max-sm:text-center">
 								{item.name}
 							</h2>
-							<h3 className="text-sm font-iransans-bold text-content-primary  max-sm:text-center">
+							<h3 className="text-sm font-iransans-bold uppercase text-content-primary  max-sm:text-center">
 								{item.title}
 							</h3>
 							<p className="font-iransans-light text-xs max-sm:text-center">

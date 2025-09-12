@@ -2,12 +2,12 @@ import Title from "../comp/Title";
 
 export default function Works() {
 	const data = [
-		"amirrrrrrrr",
-		"amirrrrrrrr",
-		"amirrrrrrrr",
-		"amirrrrrrrr",
-		"amirrrrrrrr",
-		"amirrrrrrrr",
+		"ui ux",
+		"golang",
+		"node js",
+		"django",
+		"reat",
+		"web dev",
 	];
 	return (
 		<div className="resp flex flex-col justify-center  items-center gap-7">
@@ -23,7 +23,7 @@ export default function Works() {
 						key={idx + item}
 					>
 						<div className="border border-img size-24 flex justify-center items-center">
-							<p className="-rotate-45 text-content-primary">
+							<p className="-rotate-45 text-content-primary capitalize">
 								{item}
 							</p>
 						</div>
