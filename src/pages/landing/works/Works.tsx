@@ -6,7 +6,7 @@ export default function Works() {
 		"golang",
 		"node js",
 		"django",
-		"reat",
+		"react js",
 		"web dev",
 	];
 	return (
