@@ -2,57 +2,37 @@ import { PiTextAlignJustifyBold } from "react-icons/pi";
 import Button from "../../../ui/button/Button";
 import Logo from "../../logo/Logo";
 import SideBar from "./SideBar";
-import { useEffect, useRef, useState } from "react";
+import { useLink, useOpen } from "../../../../store/store";
 
 export default function Navbar() {
-	const [open, setOpen] = useState(false);
-	const scrollYRef = useRef(0);
+	const open = useOpen((state) => state.open)
+	const setOpen = useOpen((state) => state.setOpen)
+	const active = useLink((state) => state.active)
+	const liksNav = useLink((state) => state.liksNav)
 
-	useEffect(() => {
-		if (open) {
-			scrollYRef.current = window.scrollY;
-			document.body.className = "fixed w-full";
-			document.documentElement.classList.add("scroll-auto");
-			document.body.style.top = `-${scrollYRef.current}px`;
-		} else {
-			document.body.classList.toggle("fixed");
-			document.body.classList.toggle("w-full");
-			window.scrollTo(0, scrollYRef.current);
-			document.documentElement.classList.toggle("scroll-auto");
-		}
-	}, [open]);
 	return (
 		<>
 			<div className="py-2 flex justify-between items-center">
 				<Logo />
 
 				{/* links */}
-				<ul className="flex justify-center items-center gap-[42px] max-xmd:hidden" dir="rtl">
-					<li>
-						<button className="hover:text-content-primary">
-							خانه
-						</button>
-					</li>
-					<li>
-						<button className="hover:text-content-primary">
-							تخصص ما
-						</button>
-					</li>
-					<li>
-						<button className="hover:text-content-primary">
-							درباره ما
-						</button>
-					</li>
-					<li>
-						<button className="hover:text-content-primary">
-							خدمات
-						</button>
-					</li>
-					<li>
-						<button className="hover:text-content-primary">
-							اعضا تیم
-						</button>
-					</li>
+				<ul
+					className="flex justify-center items-center gap-[42px] max-xmd:hidden"
+					dir="rtl"
+				>
+					{liksNav.map((i) => (
+						<li key={i.href}>
+							<button
+								className={`${
+									i.href === active
+										? "text-gradient-start"
+										: ""
+								} hover:text-content-primary`}
+							>
+								<a href={"#"+i.href}>{i.title}</a>
+							</button>
+						</li>
+					))}
 				</ul>
 
 				<span className="max-xmd:hidden">
@@ -60,12 +40,13 @@ export default function Navbar() {
 				</span>
 
 				<div className="xmd:hidden">
-					<button onClick={() => setOpen((p) => !p)}>
+					<button onClick={() => setOpen(!open)}>
 						<PiTextAlignJustifyBold className="text-2xl" />
 					</button>
 				</div>
+
 			</div>
-			<SideBar open={open} setOpen={setOpen} />
+			<SideBar />
 		</>
 	);
 }

@@ -40,7 +40,7 @@ export default function CardServe({
 						<span>
 							<FaAngleRight />
 						</span>
-						<span>همکاری با این بخش</span>
+						<a href={`https://t.me/TripleMDV`} target="_blank" rel="noopener noreferrer">همکاری با این بخش</a>
 					</Button>
 				</div>
 			</div>

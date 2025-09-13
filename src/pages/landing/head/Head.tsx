@@ -27,15 +27,24 @@ export default function Head() {
 						جزئیات اهمیت می‌دهیم.
 					</figcaption>
 
-					<section className="pt-10 flex justify-evenly items-center gap-8 flex-wrap w-full">
-						<Button className="">شروع یک پروژه </Button>
+					<div className="pt-10 flex justify-evenly items-center gap-8 flex-wrap w-full">
+						<Button className="">
+							<a href="mailto:metacodeteam@gmail.com">
+								شروع یک پروژه
+							</a>
+						</Button>
 						<Button className="" simple>
-							<span className="flex justify-center items-center gap-1">
+							<a
+								href="https://github.com/Metacode-team"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex justify-center items-center gap-1"
+							>
 								مشاهده نمونه کار
 								<FaAngleLeft />
-							</span>
+							</a>
 						</Button>
-					</section>
+					</div>
 				</div>
 			</div>
 			<div className="-z-0 h-1/2 absolute bottom-0 right-0 w-11/12 border border-white/10"></div>

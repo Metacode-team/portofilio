@@ -56,34 +56,41 @@
 @font-face {
 	font-family: "peyda";
 	src: url("/fonts/PeydaFaNum-Regular.ttf") format("truetype");
+	 font-display: swap ;
 }
 
 @font-face {
 	font-family: "peyda-black";
 	src: url("/fonts/PeydaFaNum-Black.ttf") format("truetype");
+	 font-display: swap ;
 }
 
 @font-face {
 	font-family: "peyda-bold";
 	src: url("/fonts/PeydaFaNum-Bold.ttf") format("truetype");
+	 font-display: swap ;
 }
 
 @font-face {
 	font-family: "peyda-light";
 	src: url("/fonts/PeydaFaNum-Light.ttf") format("truetype");
+	 font-display: swap ;
 }
 
 @font-face {
 	font-family: "iransans";
 	src: url("/fonts/IRANSansWeb_FaNum.ttf") format("truetype");
+	 font-display: swap ;
 }
 
 @font-face {
 	font-family: "iransans-bold";
 	src: url("/fonts/IRANSansWeb_FaNum_Bold.ttf") format("truetype");
+	 font-display: swap ;
 }
 
 @font-face {
 	font-family: "iransans-light";
 	src: url("/fonts/IRANSansWeb_FaNum_Light.ttf") format("truetype");
+	 font-display: swap ;
 }
