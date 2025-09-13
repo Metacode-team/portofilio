@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useLink } from "../store/store";
 
 export default function MainLayout() {
-	const active = useLink((state) => state.active);
 	const setActive = useLink((state) => state.setActive);
 
 	useEffect(() => {
