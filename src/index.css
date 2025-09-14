@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+	/* --------------- colors --------------- */
+	--color-*: initial;
+	--color-background: #0a0a0c;
+	--color-background-secondary: #101012;
+	--color-surface: #1d1d1f;
+	--color-content-primary: #e6e6e6;
+	--color-content-secondary: #797979;
+	--color-gradient-start: #2a44fc;
+	--color-gradient-end: #8422fb;
+	--color-icon-odd: #19d4fd;
+	--color-icon-even: #b419fd;
+	--color-white: #fff;
+	--color-black: #000;
+	/* --------------- colors --------------- */
+	/* --------------- break point --------------- */
+	--breakpoint-xmd: 850px;
+	/* --------------- break point --------------- */
+	/* --------------- fonts --------------- */
+	--font-peyda: "peyda";
+	--font-peyda-black: "peyda-black";
+	--font-peyda-bold: "peyda-bold";
+	--font-peyda-light: "peyda-light";
+	--font-iransans: "iransans";
+	--font-iransans-bold: "iransans-bold";
+	--font-iransans-light: "iransans-light";
+	/* --------------- fonts --------------- */
+}
+
+@layer components {
+	/* --------------- tags --------------- */
+	button {
+		@apply hover:cursor-pointer;
+	}
+	/* --------------- tags --------------- */
+	.resp {
+		@apply max-w-[1140px] px-4 mx-auto box-content;
+	}
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+@layer utilities {
+	.border-img {
+		border-image: linear-gradient(to top left,rgba(255, 255, 255, 0.05),rgba(255, 255, 255, 0.6)) 1;
+    
+	}
+}
+
+@font-face {
+	font-family: "peyda";
+	src: url("/fonts/PeydaFaNum-Regular.ttf") format("truetype");
+	 font-display: swap ;
+}
+
+@font-face {
+	font-family: "peyda-black";
+	src: url("/fonts/PeydaFaNum-Black.ttf") format("truetype");
+	 font-display: swap ;
+}
+
+@font-face {
+	font-family: "peyda-bold";
+	src: url("/fonts/PeydaFaNum-Bold.ttf") format("truetype");
+	 font-display: swap ;
+}
+
+@font-face {
+	font-family: "peyda-light";
+	src: url("/fonts/PeydaFaNum-Light.ttf") format("truetype");
+	 font-display: swap ;
+}
+
+@font-face {
+	font-family: "iransans";
+	src: url("/fonts/IRANSansWeb_FaNum.ttf") format("truetype");
+	 font-display: swap ;
+}
+
+@font-face {
+	font-family: "iransans-bold";
+	src: url("/fonts/IRANSansWeb_FaNum_Bold.ttf") format("truetype");
+	 font-display: swap ;
+}
+
+@font-face {
+	font-family: "iransans-light";
+	src: url("/fonts/IRANSansWeb_FaNum_Light.ttf") format("truetype");
+	 font-display: swap ;
+}
