@@ -2,7 +2,7 @@ name: Telegram Notifications
 
 on:
   pull_request_target:
-    types: [ opened, closed, reopened ]
+    types: [opened, closed, reopened]
   push:
 
 jobs:
@@ -12,8 +12,8 @@ jobs:
       - name: Send Telegram Notification
         env:
           BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          CHAT_ID: -1002791189479   # آیدی گروه شما
-          TOPIC_ID: 1698            # آیدی تاپیک
+          CHAT_ID: -1002791189479  # آیدی گروه شما
+          TOPIC_ID: 1698           # آیدی تاپیک
         run: |
           DESTRUCTIVE_MESSAGES=(
             "🚀 کدامو پاچیدم تو پروژه!"
@@ -23,7 +23,6 @@ jobs:
             "🔦 با سرعت نور ریدم به کد!"
             "🎯 یه مشکل جدید تولید کردم!"
           )
-
           CREATIVE_MESSAGES=(
             "😎 خودتون بریزید پشماتون بمونه!"
             "💻 یه شاهکار جدید خلق کردم!"
@@ -34,7 +33,6 @@ jobs:
             "🔮 یه جادوی برنامه‌نویسی انجام دادم!"
             "⚡ حمال برقی pr زد!"
           )
-
           APPROVAL_MESSAGES=(
             "✅ یه شاهکار دیگه تایید شد!"
             "🎉 کدم انقدر باحال بود که مرج شد!"
@@ -48,30 +46,30 @@ jobs:
           PROJECT_NAME="${{ github.repository }}"
 
           if [[ "${{ github.event_name }}" == "pull_request_target" ]]; then
-            if [[ "${{ github.event.action }}" == "opened" ]]; then
-              RANDOM_FUN=${CREATIVE_MESSAGES[$RANDOM % ${#CREATIVE_MESSAGES[@]}]}
-              MESSAGE="$RANDOM_FUN%0A%0A📂 *Project:* \`$PROJECT_NAME\`%0A📢 New Pull Request opened%0A🔗 [View PR](${{ github.event.pull_request.html_url }})%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
-            elif [[ "${{ github.event.action }}" == "closed" && "${{ github.event.pull_request.merged }}" == "true" ]]; then
-              RANDOM_FUN=${APPROVAL_MESSAGES[$RANDOM % ${#APPROVAL_MESSAGES[@]}]}
-              MESSAGE="$RANDOM_FUN%0A%0A📂 *Project:* \`$PROJECT_NAME\`%0A✅ Pull Request merged successfully%0A🔗 [View Details](${{ github.event.pull_request.html_url }})%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
-            else
-              RANDOM_FUN=${DESTRUCTIVE_MESSAGES[$RANDOM % ${#DESTRUCTIVE_MESSAGES[@]}]}
-              MESSAGE="$RANDOM_FUN%0A%0A📂 *Project:* \`$PROJECT_NAME\`%0A❌ Pull Request closed without merge%0A🔗 [View Details](${{ github.event.pull_request.html_url }})%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
-            fi
+              if [[ "${{ github.event.action }}" == "opened" ]]; then
+                  RANDOM_FUN=${CREATIVE_MESSAGES[$RANDOM % ${#CREATIVE_MESSAGES[@]}]}
+                  MESSAGE="$RANDOM_FUN%0A%0A📂 *Project:* \$PROJECT_NAME%0A📢 New Pull Request opened%0A🔗 [View PR](${{ github.event.pull_request.html_url }})%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
+              elif [[ "${{ github.event.action }}" == "closed" && "${{ github.event.pull_request.merged }}" == "true" ]]; then
+                  RANDOM_FUN=${APPROVAL_MESSAGES[$RANDOM % ${#APPROVAL_MESSAGES[@]}]}
+                  MESSAGE="$RANDOM_FUN%0A%0A📂 *Project:* \$PROJECT_NAME%0A✅ Pull Request merged successfully%0A🔗 [View Details](${{ github.event.pull_request.html_url }})%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
+              else
+                  RANDOM_FUN=${DESTRUCTIVE_MESSAGES[$RANDOM % ${#DESTRUCTIVE_MESSAGES[@]}]}
+                  MESSAGE="$RANDOM_FUN%0A%0A📂 *Project:* \$PROJECT_NAME%0A❌ Pull Request closed without merge%0A🔗 [View Details](${{ github.event.pull_request.html_url }})%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
+              fi
 
           elif [[ "${{ github.event_name }}" == "push" ]]; then
-            COMMITS=""
-            for commit in $(jq -c '.commits[]' <<< '${{ toJson(github.event.commits) }}'); do
-              AUTHOR=$(jq -r '.author.name' <<< "$commit")
-              MSG=$(jq -r '.message' <<< "$commit")
-              URL=$(jq -r '.url' <<< "$commit")
-              COMMITS="$COMMITS%0A• 👨‍💻 $AUTHOR: [$MSG]($URL)"
-            done
-            📂 *Project:* \`$PROJECT_NAME\`%0A🚀 New push to branch \`${{ github.ref_name }}\`%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
-          
+              COMMITS=""
+              for commit in $(jq -c '.commits[]' <<< '${{ toJson(github.event.commits) }}'); do
+                  AUTHOR=$(jq -r '.author.name' <<< "$commit")
+                  MSG=$(jq -r '.message' <<< "$commit")
+                  URL=$(jq -r '.url' <<< "$commit")
+                  COMMITS="$COMMITS%0A• 👨‍💻 $AUTHOR: [$MSG]($URL)"
+              done
+              MESSAGE="📂 *Project:* \$PROJECT_NAME%0A🚀 New push to branch \${{ github.ref_name }}%0A🔗 [View Commits](${{ github.event.compare }})%0A$COMMITS"
+
           else
-            RANDOM_FUN=${CREATIVE_MESSAGES[$RANDOM % ${#CREATIVE_MESSAGES[@]}]}
-            MESSAGE="$RANDOM_FUN%0A%0A📂 *Project:* \`$PROJECT_NAME\`%0Aℹ️ Unknown event: ${{ github.event_name }}%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
+              RANDOM_FUN=${CREATIVE_MESSAGES[$RANDOM % ${#CREATIVE_MESSAGES[@]}]}
+              MESSAGE="$RANDOM_FUN%0A%0A📂 *Project:* \$PROJECT_NAME%0Aℹ️ Unknown event: ${{ github.event_name }}%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
           fi
 
           curl -s -X POST https://api.telegram.org/bot$BOT_TOKEN/sendMessage \
