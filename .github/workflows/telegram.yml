@@ -60,7 +60,6 @@ jobs:
             fi
 
           elif [[ "${{ github.event_name }}" == "push" ]]; then
-            RANDOM_FUN=${CREATIVE_MESSAGES[$RANDOM % ${#CREATIVE_MESSAGES[@]}]}
             COMMITS=""
             for commit in $(jq -c '.commits[]' <<< '${{ toJson(github.event.commits) }}'); do
               AUTHOR=$(jq -r '.author.name' <<< "$commit")
@@ -68,7 +67,7 @@ jobs:
               URL=$(jq -r '.url' <<< "$commit")
               COMMITS="$COMMITS%0A• 👨‍💻 $AUTHOR: [$MSG]($URL)"
             done
-            MESSAGE="$RANDOM_FUN%0A%0A📂 *Project:* \`$PROJECT_NAME\`%0A🚀 New push to branch \`${{ github.ref_name }}\`%0A🔗 [View Commits](${{ github.event.compare }})%0A$COMMITS%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
+            📂 *Project:* \`$PROJECT_NAME\`%0A🚀 New push to branch \`${{ github.ref_name }}\`%0A%0A👤 *Assignee:* ${{ github.actor }}%0A%0A🏷️ *Meta Code Team*"
           
           else
             RANDOM_FUN=${CREATIVE_MESSAGES[$RANDOM % ${#CREATIVE_MESSAGES[@]}]}
