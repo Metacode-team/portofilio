@@ -1,5 +1,7 @@
 import { create } from "zustand";
 
+
+// useLink => manage active links
 type LinkState = {
 	active: string;
 	liksNav: {
@@ -8,7 +10,6 @@ type LinkState = {
 	}[];
 	setActive: (newActive: string) => void;
 };
-
 export const useLink = create<LinkState>((set) => ({
 	active: "home",
 	liksNav: [
@@ -23,7 +24,7 @@ export const useLink = create<LinkState>((set) => ({
 
 
 
-
+//  useOpen => sidebar manage 
 type OpenState = {
 	open : boolean,
     setOpen : (val : boolean) => void

@@ -5,10 +5,12 @@ import Button from "../../../components/ui/button/Button";
 export default function Head() {
 	return (
 		<div className="relative">
+			{/* text $ img */}
 			<div
 				className="*:z-[99] z-[99] grid grid-cols-2 max-md:grid-cols-1 justify-between items-center"
 				dir="rtl"
 			>
+				{/* img & icon */}
 				<div className="relative">
 					<img src="/imgs/head.png" alt="" />
 
@@ -16,6 +18,8 @@ export default function Head() {
 						<BsStars className="text-6xl text-gradient-start" />
 					</div>
 				</div>
+
+				{/* info | text */}
 				<div className="flex flex-col justify-between items-start gap-7 p-4 max-md:items-center *:max-md:text-center">
 					<h2 className="font-peyda-bold text-3xl text-content-primary">
 						معماران وب‌سایت رویایی شما
@@ -47,6 +51,8 @@ export default function Head() {
 					</div>
 				</div>
 			</div>
+
+			{/* background */}
 			<div className="-z-0 h-1/2 absolute bottom-0 right-0 w-11/12 border border-white/10"></div>
 			<div className="bg-gradient-to-bl -z-0 h-1/2 absolute bottom-10 left-0 w-11/12 from-white/10 to-white/0"></div>
 		</div>
