@@ -16,6 +16,8 @@ export default function Works() {
 				subTitle="فرآیند کاری ما"
 				cap="در متا کد، ما به یک فرآیند کاری شفاف و ساختاریافته باور داریم. هر پروژه، سفری است که با درک عمیق نیازهای شما آغاز شده و با آزمون و بهینه‌سازی مداوم، به یک نتیجه بی‌نقص و کارآمد ختم می‌شود. این رویکرد تضمین‌کننده کیفیت و موفقیت پروژه شماست."
 			/>
+
+			{/* show work flow --- this part should be our work flow , for now i use our tech stack */}
 			<div className="grid grid-cols-2 gap-y-32 justify-between w-11/12 mx-auto justify-items-center items-center md:grid-cols-6 *:rounded *:odd:translate-y-1/2 *:even:-translate-y-1/2 my-32">
 				{data.map((item, idx) => (
 					<div

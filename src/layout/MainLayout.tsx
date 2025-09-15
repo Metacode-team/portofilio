@@ -19,7 +19,7 @@ export default function MainLayout() {
 				});
 			},
 			{
-				rootMargin: "-50% 0px -50% 0px", // یا هر مقدار مناسبی که نیاز داری
+				rootMargin: "-50% 0px -50% 0px", // i thing these value would create a good user experience 
 				threshold: 0,
 			}
 		);

@@ -38,6 +38,7 @@ export default function Team() {
 			id: 3,
 		},
 	];
+
 	return (
 		<div>
 			<Title
@@ -54,6 +55,7 @@ export default function Team() {
 								alt=""
 								className="relative z-[99]"
 							/>
+							{/* backgorung of png */}
 							<div className="absolute bottom-0 right-0 left-0 z-0">
 								<Custom2 />
 							</div>
@@ -66,14 +68,21 @@ export default function Team() {
 								{item.name}
 							</h2>
 							<h3 className="text-sm font-iransans-bold uppercase text-content-primary  max-sm:text-center">
-								{item.title}
+								{item.title}{" "}
+								{/* skill that we know our teammate */}
 							</h3>
 							<p className="font-iransans-light text-xs max-sm:text-center">
 								{item.cap}
 							</p>
 
+							{/* contact teammate */}
 							<Button>
-								<a href={`https://t.me/${item.link}`} target="_blank" rel="noopener noreferrer" className="flex justify-center gap-3 items-center">
+								<a
+									href={`https://t.me/${item.link}`}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="flex justify-center gap-3 items-center"
+								>
 									<span>ارتباط</span>
 									<span>
 										<PiPlugsConnected />

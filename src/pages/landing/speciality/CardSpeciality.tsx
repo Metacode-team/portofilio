@@ -18,11 +18,13 @@ export default function CardSpeciality({
 			<div className="relative size-fit -z-0">
 				<span
 					className={`${
-						id % 2 === 0 ? "text-icon-even" : "text-icon-odd"
+						id % 2 === 0 ? "text-icon-even" : "text-icon-odd" // even => purple | odd => blue
 					} *:text-4xl`}
 				>
 					{icon}
 				</span>
+
+				{/* background of our icon */}
 				<span className="absolute z-10 top-0 right-0 size-fit">
 					<Custom1 />
 				</span>
@@ -31,7 +33,7 @@ export default function CardSpeciality({
 				{title}
 			</div>
 			<div className="">
-				<TbSeparator className="text-gradient-start text-3xl" />
+				<TbSeparator className="text-gradient-start text-3xl" /> {/* divider */}
 			</div>
 			<div className="text-center">{cap}</div>
 		</div>
